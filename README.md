@@ -51,3 +51,20 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 
 We split all users into three sparsity groups according to the number $K$ of their interacted items:
 * Low group: $K\in [0,10)$
+* Medium group: $K\in [10, 50)$
+* High group: $K\in [50,)$
+
+We compare GBSR and the backbone model performances(NDCG@20) under different sparsity groups:
+* Douban-Book dataset:
+  
+|Methods|Low [0,10)|Medium [10,50)|High [50,)|
+|:---:|:---:|:---:|:---:|
+|LightGCN-S|0.0322|0.0492|0.0726|
+|GBSR|0.0375+(16.46%)|0.0542(+10.16%)|0.0783(+7.85%)|
+
+* Epinions dataset:
+  
+|Methods|Low [0,10)|Medium [10,50)|High [50,)|
+|:---:|:---:|:---:|:---:|
+|LightGCN-S|0.0322|0.0492|0.0726|
+|GBSR|0.0375+(16.46%)|0.0542(+10.16%)|0.0783(+7.85%)|
