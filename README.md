@@ -26,7 +26,7 @@ Experimental Results
 ## Denoising Results under different degrees of added noises(Semi-synthetic dataset)
 To better evaluate the denoising ability of GBSR, we add the comparisons on the semi-synthetic datasets. Specifically, we inject a certain percentage $\delta$ of fake social relations to the original social graph and compare GBSR with different degree noise scenarios.
 * Yelp dataset:
-  | Methods | $\delta=0$ | $\delta=0.2$ | $\delta=0.5$ |$\delta=1.0$ |$\delta=2.0$ |
+| Methods | $\delta=0$ | $\delta=0.2$ | $\delta=0.5$ |$\delta=1.0$ |$\delta=2.0$ |
 | --- | --- | --- |---|---|---|
 |**LightGCN-S**| 0.1126|0.1118 |0.1089|0.1073|0.1029 |
 | **GBSR**   | 0.1243 | 0.1235|0.1213|0.1197|0.1152|
