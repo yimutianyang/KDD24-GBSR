@@ -16,7 +16,8 @@ Usage
 
 Experimental Results
 --------------------
-> Recommendation Performances(Original dataset)
+> **Recommendation Performances(Original dataset)**
+
 |Datasets|Recall@10|NDCG@20|Recall@20|NDCG@20|
 |:---:|:---:|:---:|:---:|:---:|
 |Douban-Book|0.1189|0.1451|0.1694|0.1532|
@@ -25,7 +26,8 @@ Experimental Results
 
 With the increase of noise degree, we can find that GBSR obtains higher gains(Recall@20) compared with LightGCN-S, which effectively demonstrates the denoising ability of GBSR. (3) We compute average social relation confidences and find that fake relations(0.8692) are significantly lower than original relations(1.0004). Furthermore, GBSR can identify over 90% of fake social relations when $\delta=1.0$. Superior recommendation performances and significant noise discrimination verify the social denoising ability of our proposed GBSR.
 
-> Denoising Results under different degrees of added noises(Semi-synthetic dataset)
+> **Denoising Results under different degrees of added noises(Semi-synthetic dataset)**
+
 To better evaluate the denoising ability of GBSR, we add the comparisons on the semi-synthetic datasets. Specifically, we inject a certain percentage $\delta$ of fake social relations to the original social graph and compare GBSR with different degree noise scenarios.
 * Yelp dataset:
   
@@ -35,7 +37,8 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 | GBSR   | 0.1243 | 0.1235|0.1213|0.1197|0.1152|
 |Improvement|10.40%|10.47%|11.39%|11.56%|11.95%|
 
-> Running Time Comparisons (s/epoch)+convergence epochs
+> **Running Time Comparisons (s/epoch)+convergence epochs**
+
 |Methods|Douban-Book|Yelp|Epinions|
 |:---:|:---:|:---:|:---:|
 |LightGCN-S|3.60+508|3.08+262|2.67+560|
