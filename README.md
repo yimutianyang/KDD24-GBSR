@@ -64,11 +64,11 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 
 |Methods|Douban-Book|Yelp|Epinions|
 |:---:|:---:|:---:|:---:|
-|LightGCN-S|3.60+508|3.08+262|2.67+560|
-|Rule-based|3.47+562|2.78+320|2.35+595|
-|ESRF|22.32+36|35.40+68|21.46+52|
-|GDMSR|22.19+650|20.95+548|16.22+399|
-|GBSR|6.97+53|6.93+90|4.96+95|
+|LightGCN-S|3.60*508 s|3.08*262 s|2.67*560 s|
+|Rule-based|3.47*562 s|2.78*320 s|2.35*595 s|
+|ESRF|22.32*36 s|35.40*68 s|21.46*52 s|
+|GDMSR|22.19*650 s|20.95*548 s|16.22*399 s|
+|GBSR|6.97*53 s|6.93*90 s|4.96*95 s|
 
 > **(5) Sparsity Analysis**
 
