@@ -16,10 +16,12 @@ Usage
 
 Experimental Results
 --------------------
-## Top-20 Recommendation Performances(Original dataset)
-* Douban-Book: Recall@20=0.1694, NDCG@20=0.1523
-* Yelp: Recall@20=0.1243, NDCG@20=0.0724
-* Epinions: Recall@20=0.0793, NDCG@20=0.0464
+## Recommendation Performances(Original dataset)
+|Datasets|Recall@10|NDCG@20|Recall@20|NDCG@20|
+|:---:|:---:|:---:|:---:|:---:|
+|Douban-Book|0.1189|0.1451|0.1694|0.1532|
+|Yelp|0.0805|0.0592|0.1243|0.0724|
+|Epinions|0.0529|0.0385|0.0793|0.0464|
 
 ## Denoising Results under different degrees of added noises(Semi-synthetic dataset)
 
