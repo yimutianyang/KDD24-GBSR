@@ -1,8 +1,8 @@
 # KDD24-GBSR-Project
 
-Overview
+；Overview
 --------
-Official code of the submission "Graph Bottlenecked Social Recommendation"(KDD2024 ID:759)
+Project of the submission "Graph Bottlenecked Social Recommendation"(KDD2024 ID:759)
 
 Prerequisites
 -------------
