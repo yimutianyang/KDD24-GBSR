@@ -23,6 +23,8 @@ Experimental Results
 |Yelp|0.0805|0.0592|0.1243|0.0724|
 |Epinions|0.0529|0.0385|0.0793|0.0464|
 
+With the increase of noise degree, we can find that GBSR obtains higher gains(Recall@20) compared with LightGCN-S, which effectively demonstrates the denoising ability of GBSR. (3) We compute average social relation confidences and find that fake relations(0.8692) are significantly lower than original relations(1.0004). Furthermore, GBSR can identify over 90% of fake social relations when $\delta=1.0$. Superior recommendation performances and significant noise discrimination verify the social denoising ability of our proposed GBSR.
+
 ## Denoising Results under different degrees of added noises(Semi-synthetic dataset)
 To better evaluate the denoising ability of GBSR, we add the comparisons on the semi-synthetic datasets. Specifically, we inject a certain percentage $\delta$ of fake social relations to the original social graph and compare GBSR with different degree noise scenarios.
 * Yelp dataset:
