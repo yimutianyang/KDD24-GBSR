@@ -47,3 +47,7 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 |GDMSR|22.19+650|20.95+548|16.22+399|
 |GBSR|6.97+53|6.93+90|4.96+95|
 
+> **Sparsity Analysis**
+
+We split all users into three sparsity groups according to the number $K$ of their interacted items:
+* Low group: $K\in [0,10)$
