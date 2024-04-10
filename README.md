@@ -1,6 +1,6 @@
 # KDD24-GBSR-Project
 
-；Overview
+Overview
 --------
 Project of the submission "Graph Bottlenecked Social Recommendation"(KDD2024 ID:759)
 
