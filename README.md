@@ -16,7 +16,7 @@ Usage
 
 Experimental Results
 --------------------
-> **Recommendation Performances(Original dataset)**
+> **(1) Recommendation Performances(Original dataset)**
 
 |Datasets|Recall@10|NDCG@20|Recall@20|NDCG@20|
 |:---:|:---:|:---:|:---:|:---:|
@@ -26,7 +26,7 @@ Experimental Results
 
 With the increase of noise degree, we can find that GBSR obtains higher gains(Recall@20) compared with LightGCN-S, which effectively demonstrates the denoising ability of GBSR. (3) We compute average social relation confidences and find that fake relations(0.8692) are significantly lower than original relations(1.0004). Furthermore, GBSR can identify over 90% of fake social relations when $\delta=1.0$. Superior recommendation performances and significant noise discrimination verify the social denoising ability of our proposed GBSR.
 
-> **Denoising Results under different degrees of added noises(Semi-synthetic dataset)**
+> **(2) Denoising ability under different degrees of added noises(Semi-synthetic dataset)**
 
 To better evaluate the denoising ability of GBSR, we add the comparisons on the semi-synthetic datasets. Specifically, we inject a certain percentage $\delta$ of fake social relations to the original social graph and compare GBSR with different degree noise scenarios.
 * Yelp dataset:
@@ -37,7 +37,30 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 | GBSR   | 0.1243 | 0.1235|0.1213|0.1197|0.1152|
 |Improvement|10.40%|10.47%|11.39%|11.56%|11.95%|
 
-> **Running Time Comparisons (s/epoch)+convergence epochs**
+> **(3) Comparisons with SEPT**
+
+* Douban-Book
+  
+|Methods|Recall@10|NDCG@10|Recall@20|NDCG@20|
+|:---:|:---:|:---:|:---:|:---:|
+|SEPT|0.1094|0.1300|0.1592|0.1382|
+|GBSR|0.1189|0.1451|0.1694|0.1523|
+
+* Yelp
+
+|Methods|Recall@10|NDCG@10|Recall@20|NDCG@20|
+|:---:|:---:|:---:|:---:|:---:|
+|SEPT|0.0749|0.0553|0.1176|0.0682|
+|GBSR|0.0805|0.0592|0.1243|0.0724|
+
+* Epinions
+
+|Methods|Recall@10|NDCG@10|Recall@20|NDCG@20|
+|:---:|:---:|:---:|:---:|:---:|
+|SEPT|0.0457|0.0341|0.0724|0.0416|
+|GBSR|0.529|0.0385|0.0793|0.0464|
+  
+> **(4) Running Time Comparisons (s/epoch)+convergence epochs**
 
 |Methods|Douban-Book|Yelp|Epinions|
 |:---:|:---:|:---:|:---:|
@@ -47,7 +70,7 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 |GDMSR|22.19+650|20.95+548|16.22+399|
 |GBSR|6.97+53|6.93+90|4.96+95|
 
-> **Sparsity Analysis**
+> **(5) Sparsity Analysis**
 
 We split all users into three sparsity groups according to the number $K$ of their interacted items:
 * Low group: $K\in [0,10)$
