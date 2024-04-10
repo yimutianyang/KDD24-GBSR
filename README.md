@@ -33,5 +33,12 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 | GBSR   | 0.1243 | 0.1235|0.1213|0.1197|0.1152|
 |Improvement|10.40%|10.47%|11.39%|11.56%|11.95%|
 
-
+## Running Time Comparisons (s/epoch)+convergence epochs
+|Methods|Douban-Book|Yelp|Epinions|
+|:---:|:---:|:---:|:---:|
+|LightGCN-S|3.60+508|3.08+262|2.67+560|
+|Rule-based|3.47+562|2.78+320|2.35+595|
+|ESRF|22.32+36|35.40+68|21.46+52|
+|GDMSR|22.19+650|20.95+548|16.22+399|
+|GBSR|6.97+53|6.93+90|4.96+95|
 
