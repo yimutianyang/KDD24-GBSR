@@ -2,7 +2,7 @@
 
 Overview
 --------
-Project of the submission "Graph Bottlenecked Social Recommendation"(KDD2024 ID:759)
+Implementation of the submission "Graph Bottlenecked Social Recommendation"(KDD2024 ID:759)
 
 Prerequisites
 -------------
