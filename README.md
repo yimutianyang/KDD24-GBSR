@@ -37,6 +37,9 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 | GBSR   | 0.1243 | 0.1235|0.1213|0.1197|0.1152|
 |Improvement|10.40%|10.47%|11.39%|11.56%|11.95%|
 
+With the increase of noise degree, we can find that GBSR obtains higher gains(Recall@20) compared with LightGCN-S, which effectively demonstrates the denoising ability of GBSR.
+Besides, we compute the average social relation confidences and find that fake relations(0.8692) are significantly lower than original relations(1.0004). Furthermore, GBSR can identify over 90% of fake social relations when $\delta=1.0$. Superior recommendation performances and significant noise discrimination verify the social denoising ability of our proposed GBSR.
+
 > **(3) Comparisons with SEPT**
 
 * Douban-Book
