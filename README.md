@@ -59,8 +59,14 @@ We compare GBSR and the backbone model performances(NDCG@20) under different spa
   
 |Methods|Low [0,10)|Medium [10,50)|High [50,)|
 |:---:|:---:|:---:|:---:|
-|LightGCN-S|0.0322|0.0492|0.0726|
-|GBSR|0.0375+(16.46%)|0.0542(+10.16%)|0.0783(+7.85%)|
+|LightGCN-S|0.1016|0.1306|0.1548|
+|GBSR|0.1257(+23.72%)|0.1534(+17.46%)|0.1803(+16.47%)|
+
+* Yelp dataset:
+|Methods|Low [0,10)|Medium [10,50)|High [50,)|
+|:---:|:---:|:---:|:---:|
+|LightGCN-S|0.0526|0.0728|0.1043|
+|GBSR|0.0607(+15.40%)|0.0785(+7.83%)|0.1111(+6.52%)|
 
 * Epinions dataset:
   
@@ -68,3 +74,5 @@ We compare GBSR and the backbone model performances(NDCG@20) under different spa
 |:---:|:---:|:---:|:---:|
 |LightGCN-S|0.0322|0.0492|0.0726|
 |GBSR|0.0375+(16.46%)|0.0542(+10.16%)|0.0783(+7.85%)|
+
+We can observe that GBSR consistently outperforms the backbone model in each sparsity group. Besides, GBSR has a larger margin improvement on the sparser group, the reason is that those users with limited interactions are more vulnerable to being affected by noisy social relations.
