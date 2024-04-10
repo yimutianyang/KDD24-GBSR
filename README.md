@@ -63,6 +63,7 @@ We compare GBSR and the backbone model performances(NDCG@20) under different spa
 |GBSR|0.1257(+23.72%)|0.1534(+17.46%)|0.1803(+16.47%)|
 
 * Yelp dataset:
+  
 |Methods|Low [0,10)|Medium [10,50)|High [50,)|
 |:---:|:---:|:---:|:---:|
 |LightGCN-S|0.0526|0.0728|0.1043|
