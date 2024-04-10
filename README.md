@@ -68,6 +68,7 @@ To better evaluate the denoising ability of GBSR, we add the comparisons on the 
 |Rule-based|3.47*562 s|2.78*320 s|2.35*595 s|
 |ESRF|22.32*36 s|35.40*68 s|21.46*52 s|
 |GDMSR|22.19*650 s|20.95*548 s|16.22*399 s|
+|SEPT|11.25*30 s|8.25*72 s| 9.53*65 s| 
 |GBSR|6.97*53 s|6.93*90 s|4.96*95 s|
 
 > **(5) Sparsity Analysis**
