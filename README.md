@@ -1,5 +1,4 @@
 # KDD24-GBSR-Project
----
 
 Overview
 --------
