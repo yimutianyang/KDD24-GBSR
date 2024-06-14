@@ -3,7 +3,7 @@
 Overview
 --------
 Implementation of our KDD'24 accepted paper "Graph Bottlenecked Social Recommendation".
-![](https://github.com/yimutianyang/KDD24-GBSR/blob/main/framework.jpg =600x)
+![](https://github.com/yimutianyang/KDD24-GBSR/blob/main/framework.jpg)
 
 In this work, we revisit the general social recommendation and propose a novel Graph Bottlenecked Social Recommendation(GBSR) framework.
 Instead of directly taking the observed social networks into formulation, we focus on removing the redundant social relations(noise) to facilitate
