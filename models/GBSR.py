@@ -36,7 +36,7 @@ class GBSR_SLightGCN(Base_CF):
         self.social_index = dataset.social_index_in_social_lightgcn()
         self.social_u = self.adj_indices[self.social_index, 0]#.reshape(-1,)
         self.social_v = self.adj_indices[self.social_index, 1]#.reshape(-1,)
-        np.save('social_index.npy', self.adj_indices[self.social_index])
+        #np.save('social_index.npy', self.adj_indices[self.social_index])
         self.social_weight = self.adj_values[self.social_index]
         self.adj_matrix = tf.SparseTensor(self.adj_indices, self.adj_values, adj_shape)
         self.Mask_MLP1 = tf.layers.Dense(self.latent_dim, activation=tf.nn.relu)
@@ -69,7 +69,7 @@ class GBSR_SLightGCN(Base_CF):
         eps = tf.random_uniform(logit.shape) #(bias - (1 - bias)) * tf.random_uniform(logit.shape) + (1 - bias)
         mask_gate_input = tf.log(eps) - tf.log(1 - eps)
         mask_gate_input = (logit+mask_gate_input) / 0.2
-        mask_gate_input = tf.nn.sigmoid(mask_gate_input) + self.edge_bias #self.edge_bias
+        mask_gate_input = tf.nn.sigmoid(mask_gate_input) + self.edge_bias
         masked_values = tf.multiply(self.social_weight, mask_gate_input)
         masked_values_all = tf.scatter_nd_update(tf.Variable(self.adj_values, trainable=False),
                                                  tf.reshape(self.social_index, [-1, 1]),
@@ -130,10 +130,6 @@ class GBSR_SLightGCN(Base_CF):
             ego_emb = tf.concat([self.user_latent_emb, self.item_latent_emb], axis=0)
             # gcn_emb = self._create_lightgcn_emb(ego_emb)
             self.masked_adj_matrix, self.masked_gate_input, self.masked_values = self.graph_reconstruction(ego_emb, 0)
-            # self.masked_adj_matrix, self.masked_gate_input = self.graph_reconstruction_1(ego_emb)
-            # self.masked_values = self.masked_adj_matrix.values
-            # _, _, self.user_emb_rec, self.item_emb_rec = \
-            #     self._create_masked_lightgcn_emb(ego_emb, self.graph_reconstruction_test(ego_emb, 0))
             #### (1) single mask layer  ####
             self.user_emb_old, self.item_emb_old, self.user_emb, self.item_emb = \
                 self._create_masked_lightgcn_emb(ego_emb, self.masked_adj_matrix)
