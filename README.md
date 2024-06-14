@@ -1,8 +1,12 @@
-# KDD24-GBSR-Project
+# Graph Bottlenecked Social Recommendation
 
 Overview
 --------
-Implementation of the submission "Graph Bottlenecked Social Recommendation"(KDD2024 ID:759)
+Implementation of our KDD'24 accepted paper "Graph Bottlenecked Social Recommendation".
+
+In this work, we revisit the general social recommendation and propose a novel Graph Bottlenecked Social Recommendation(GBSR) framework.
+Instead of directly taking the observed social networks into formulation, we focus on removing the redundant social relations(noise) to facilitate
+recommendation tasks. GBSR is a model-agnostic social denoising framework, that aims to maximize the mutual information between the denoised social graph and recommendation labels, while minimizing it between the denoised social graph and the original one. This enables GBSR to preserve the minimal yet efficient social structure. Technically, GBSR consists of two elaborate components, preference-guided social graph refinement, and HSIC-based bottleneck learning. Experiments conducted on three datasets demonstrate the effectiveness of the proposed GBSR framework.
 
 Prerequisites
 -------------
@@ -14,91 +18,7 @@ Usage
 * python run_GBSR.py --dataset yelp --runid 2.0GIB+0.25sigma --alpha 2.0 --sigma 0.25
 * python run_GBSR.py --dataset epinions --runid 3.0+0.25sigma --alpha 3.0 --sigma 0.25
 
-Experimental Results
---------------------
-> **(1) Recommendation Performances(Original dataset)**
 
-|Datasets|Recall@10|NDCG@20|Recall@20|NDCG@20|
-|:---:|:---:|:---:|:---:|:---:|
-|Douban-Book|0.1189|0.1451|0.1694|0.1532|
-|Yelp|0.0805|0.0592|0.1243|0.0724|
-|Epinions|0.0529|0.0385|0.0793|0.0464|
-
-> **(2) Denoising ability under different degrees of added noises(Semi-synthetic dataset)**
-
-To better evaluate the denoising ability of GBSR, we add the comparisons on the semi-synthetic datasets. Specifically, we inject a certain percentage $\delta$ of fake social relations to the original social graph and compare GBSR with different degree noise scenarios.
-* Yelp dataset:
-  
-| Methods | $\delta=0$ | $\delta=0.2$ | $\delta=0.5$ |$\delta=1.0$ |$\delta=2.0$ |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-|LightGCN-S| 0.1126|0.1118 |0.1089|0.1073|0.1029 |
-| GBSR   | 0.1243 | 0.1235|0.1213|0.1197|0.1152|
-|Improvement|10.40%|10.47%|11.39%|11.56%|11.95%|
-
-With the increase of noise degree, we can find that GBSR obtains higher gains(Recall@20) compared with LightGCN-S, which effectively demonstrates the denoising ability of GBSR.
-Besides, we compute the average social relation confidences and find that fake relations(0.8692) are significantly lower than original relations(1.0004). Furthermore, GBSR can identify over 90% of fake social relations when $\delta=1.0$. Superior recommendation performances and significant noise discrimination verify the social denoising ability of our proposed GBSR.
-
-> **(3) Comparisons with SEPT**
-
-* Douban-Book
-  
-|Methods|Recall@10|NDCG@10|Recall@20|NDCG@20|
-|:---:|:---:|:---:|:---:|:---:|
-|SEPT|0.1094|0.1300|0.1592|0.1382|
-|GBSR|0.1189|0.1451|0.1694|0.1523|
-
-* Yelp
-
-|Methods|Recall@10|NDCG@10|Recall@20|NDCG@20|
-|:---:|:---:|:---:|:---:|:---:|
-|SEPT|0.0749|0.0553|0.1176|0.0682|
-|GBSR|0.0805|0.0592|0.1243|0.0724|
-
-* Epinions
-
-|Methods|Recall@10|NDCG@10|Recall@20|NDCG@20|
-|:---:|:---:|:---:|:---:|:---:|
-|SEPT|0.0457|0.0341|0.0724|0.0416|
-|GBSR|0.529|0.0385|0.0793|0.0464|
-  
-> **(4) Running Time Comparisons (s/epoch)+convergence epochs**
-
-|Methods|Douban-Book|Yelp|Epinions|
-|:---:|:---:|:---:|:---:|
-|LightGCN-S|3.60*508 s|3.08*262 s|2.67*560 s|
-|Rule-based|3.47*562 s|2.78*320 s|2.35*595 s|
-|ESRF|22.32*36 s|35.40*68 s|21.46*52 s|
-|GDMSR|22.19*650 s|20.95*548 s|16.22*399 s|
-|SEPT|11.25*30 s|8.25*72 s| 9.53*65 s| 
-|GBSR|6.97*53 s|6.93*90 s|4.96*95 s|
-
-> **(5) Sparsity Analysis**
-
-We split all users into three sparsity groups according to the number $K$ of their interacted items:
-* Low group: $K\in [0,10)$
-* Medium group: $K\in [10, 50)$
-* High group: $K\in [50,)$
-
-We compare GBSR and the backbone model performances(NDCG@20) under different sparsity groups:
-* Douban-Book dataset:
-  
-|Methods|Low [0,10)|Medium [10,50)|High [50,)|
-|:---:|:---:|:---:|:---:|
-|LightGCN-S|0.1016|0.1306|0.1548|
-|GBSR|0.1257(+23.72%)|0.1534(+17.46%)|0.1803(+16.47%)|
-
-* Yelp dataset:
-  
-|Methods|Low [0,10)|Medium [10,50)|High [50,)|
-|:---:|:---:|:---:|:---:|
-|LightGCN-S|0.0526|0.0728|0.1043|
-|GBSR|0.0607(+15.40%)|0.0785(+7.83%)|0.1111(+6.52%)|
-
-* Epinions dataset:
-  
-|Methods|Low [0,10)|Medium [10,50)|High [50,)|
-|:---:|:---:|:---:|:---:|
-|LightGCN-S|0.0322|0.0492|0.0726|
-|GBSR|0.0375+(16.46%)|0.0542(+10.16%)|0.0783(+7.85%)|
-
-We can observe that GBSR consistently outperforms the backbone model in each sparsity group. Besides, GBSR has a larger margin improvement on the sparser group, the reason is that those users with limited interactions are more vulnerable to being affected by noisy social relations.
+Author contact:
+--------------
+Email: yyh.hfut@gmail.com
