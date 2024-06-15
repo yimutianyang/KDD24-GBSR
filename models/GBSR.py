@@ -30,7 +30,7 @@ class GBSR_SLightGCN(Base_CF):
         super(GBSR_SLightGCN, self).__init__(args)
         self.gcn_layer = args.gcn_layer
         self.sigma = args.sigma
-        self.alpha = args.alpha
+        self.beta = args.beta
         self.num_inter = len(dataset.training_user)*2
         self.adj_indices, self.adj_values, adj_shape = dataset.convert_csr_to_sparse_tensor_inputs(dataset.uu_i_matrix)
         self.social_index = dataset.social_index_in_social_lightgcn()
@@ -138,7 +138,7 @@ class GBSR_SLightGCN(Base_CF):
             #     self._create_multiple_masked_lightgcn_emb(ego_emb)
         with tf.name_scope('optimization'):
             self.ranking_loss, self.regu_loss, self.auc = self.compute_bpr_loss(self.user_emb, self.item_emb)
-            self.IB_loss = self.HSIC_Graph() * self.alpha
+            self.IB_loss = self.HSIC_Graph() * self.beta
             self.loss = self.ranking_loss + self.regu_loss + self.IB_loss
             self.opt = tf.train.AdamOptimizer(learning_rate=self.lr).minimize(self.loss)
 
