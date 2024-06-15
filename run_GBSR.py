@@ -31,7 +31,7 @@ def parse_args():
     parser.add_argument('--num_item', type=int, default=22347, help='max iid')
     parser.add_argument('--latent_dim', type=int, default=64, help='latent embedding dimension')
     parser.add_argument('--l2_reg', type=float, default=1e-4, help='?')
-    parser.add_argument('--alpha', type=float, default=5.0, help='?')
+    parser.add_argument('--beta', type=float, default=5.0, help='cofficient of HSIC regularization')
     parser.add_argument('--sigma', type=float, default=0.25, help='?')
     parser.add_argument('--edge_bias', type=float, default=0.5, help='observation bias of social relations')
     parser.add_argument('--social_noise_ratio', type=float, default=0, help='?')
