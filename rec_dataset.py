@@ -1,3 +1,4 @@
+import torch
 import numpy as np
 import os, pdb
 from time import time
@@ -43,6 +44,7 @@ def Uniform_sampling(batch_users, traindata, num_item):
 
 class Dataset(object):
     def __init__(self, args):
+        self.device = torch.device("cuda:" + str(args.device_id) if torch.cuda.is_available() else "cpu")
         self.args = args
         self.data_path = args.data_path
         self.num_user = args.num_user
@@ -155,9 +157,7 @@ class Dataset(object):
         social_j = np.array(self.social_j)
         social_r = np.ones_like(social_i, dtype=np.float32)
         social_adj = sp.csr_matrix((social_r, (social_i, social_j)), shape=(self.num_node, self.num_node))
-        # pdb.set_trace()
         adj_mat = adj_mat + social_adj
-
         # pre adjcency matrix
         rowsum = np.array(adj_mat.sum(1))
         d_inv = np.power(rowsum, -0.5).flatten()
@@ -185,6 +185,43 @@ class Dataset(object):
         print('number of social edges:', len(social_edge_index))
         return np.array(social_edge_index)
 
+
+    def get_uu_i_matrix(self):
+        user_dim = torch.LongTensor(self.training_user)
+        item_dim = torch.LongTensor(self.training_item) + self.num_user
+        social_i = torch.LongTensor(self.social_i)
+        social_j = torch.LongTensor(self.social_j)
+        first_sub = torch.stack([user_dim, item_dim])
+        second_sub = torch.stack([item_dim, user_dim])
+        third_sub = torch.stack([social_i, social_j])
+        # index = torch.cat([first_sub, second_sub], dim=1)
+        index = torch.cat([first_sub, second_sub, third_sub], dim=1)
+        data = torch.ones(index.size(-1)).int()
+        Graph = torch.sparse.IntTensor(index, data,
+                                            torch.Size([self.num_user + self.num_item, self.num_user + self.num_item]))
+        dense = Graph.to_dense()
+        D = torch.sum(dense, dim=1).float()
+        D[D == 0.] = 1.
+        D_sqrt = torch.sqrt(D).unsqueeze(dim=0)
+        dense = dense / D_sqrt
+        dense = dense / D_sqrt.t()
+        index = dense.nonzero()
+        data = dense[dense >= 1e-9]
+        assert len(index) == len(data)
+        # pdb.set_trace()
+        Graph = torch.sparse.FloatTensor(index.t(), data, torch.Size(
+            [self.num_user + self.num_item, self.num_user + self.num_item]))
+        Graph = Graph.coalesce().to(self.device)
+        social_edge_index = []
+        for i in range(index.shape[0]):
+            if index[i][0] < self.num_user:
+                if index[i][1] < self.num_user:
+                    social_edge_index.append(i)
+                else:
+                    continue
+            else:
+                continue
+        return Graph, social_edge_index
 
 
     def lightgcn_adj_matrix(self):
