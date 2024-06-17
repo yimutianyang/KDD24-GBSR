@@ -13,18 +13,24 @@ Prerequisites
 -------------
 * Please refer to requirements.txt
 
-Usage-tensorflow
+Usage-Tensorflow
 -----
 * python run_GBSR.py --dataset douban_book --runid 40+2.5sigma --beta 40 --sigma 0.25
 * python run_GBSR.py --dataset yelp --runid 2.0+0.25sigma --beta 2.0 --sigma 0.25
 * python run_GBSR.py --dataset epinions --runid 3.0+0.25sigma --beta 3.0 --sigma 0.25
 
-Usage-pytorch
+Usage-Pytorch
 -----
 * cd torch_version
 * python run_GBSR.py --dataset douban_book --runid 40+2.5sigma --beta 40 --sigma 0.25
 * python run_GBSR.py --dataset yelp --runid 2.0+0.25sigma --beta 2.0 --sigma 0.25
 * python run_GBSR.py --dataset epinions --runid 3.0+0.25sigma --beta 3.0 --sigma 0.25
+
+Notice
+------
+* All experimental results reported in the paper are based on TensorFlow implementation.
+* There are slight differences in Pytorch implementation. Higher performances on the double_book dataset while lower on other datasets.
+* Running speed also differs from platforms, GBSR runs much faster on the Tensorflow platform than Pytorch.
 
 
 Author contact:
