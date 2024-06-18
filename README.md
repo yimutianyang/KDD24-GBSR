@@ -3,7 +3,6 @@
 Overview
 --------
 Implementation of our KDD'24 accepted paper "Graph Bottlenecked Social Recommendation". 
-
 Our paper is available at: <https://arxiv.org/abs/2406.08214>
 <img src="https://github.com/yimutianyang/KDD24-GBSR/blob/main/framework.jpg" width=70%>
 
