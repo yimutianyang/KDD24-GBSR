@@ -2,7 +2,7 @@
 
 Overview
 --------
-Implementation of our KDD'24 accepted paper "Graph Bottlenecked Social Recommendation".
+Implementation of our KDD'24 accepted paper "Graph Bottlenecked Social Recommendation". Our paper is available at: <https://arxiv.org/abs/2406.08214>
 <img src="https://github.com/yimutianyang/KDD24-GBSR/blob/main/framework.jpg" width=70%>
 
 In this work, we revisit the general social recommendation and propose a novel Graph Bottlenecked Social Recommendation(GBSR) framework.
@@ -31,6 +31,18 @@ Notice
 * All experimental results reported in the paper are based on **TensorFlow implementation**.
 * There are slight differences in Pytorch implementation. Higher performances on the double_book dataset while lower on other datasets.
 * Running speed also differs from platforms, GBSR runs much faster on the Tensorflow platform than Pytorch.
+
+Citation
+--------
+If you find this useful for your research, please kindly cite the following paper:<be>
+```
+@article{GBSR2024,
+  title={Graph Bottlenecked Social Recommendation},
+  author={Yonghui Yang, Le Wu, Zihan Wang, Zhuangzhuang He, Richang Hong, and Meng Wang}
+  jconference={30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining},
+  year={2024}
+}
+```
 
 
 Author contact:
