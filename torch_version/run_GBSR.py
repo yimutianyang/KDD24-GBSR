@@ -49,7 +49,7 @@ def makir_dir(path):
         os.makedirs(path)
 
 def save_file(save_path):
-    copyfile('../models/GBSR.py', save_path + 'GBSR.py')
+    copyfile('./GBSR.py', save_path + 'GBSR.py')
     copyfile('./run_GBSR.py', save_path + 'run_GBSR.py')
     copyfile('../rec_dataset.py', save_path + 'rec_dataset.py')
 
