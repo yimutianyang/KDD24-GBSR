@@ -30,9 +30,9 @@ Usage-Pytorch
 
 Notice
 ------
-* All experimental results reported in the paper are based on **TensorFlow implementation**.
-* There are slight differences in Pytorch implementation. Higher performances on the double_book dataset while lower on other datasets.
-* Running speed also differs from platforms, GBSR runs much faster on the Tensorflow platform than Pytorch.
+* Experimental results reported in the paper are based on **TensorFlow implementation**.
+* There are slight differences in Pytorch implementation. Performances are higher on the double_book dataset while lower on other datasets.
+* Running speed also differs from platforms. GBSR runs much faster on the Tensorflow 1.x than Pytorch.
 
 Citation
 --------
